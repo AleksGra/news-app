@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    padding-left: 8vw;
+}
+
+.img {
+    width: 50vw;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 10px;
+
+}
