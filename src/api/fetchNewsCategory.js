@@ -5,7 +5,7 @@ export const fetchNewsCategory = async (category) => {
         const response = await fetch(url).then();
         const data = await response.json();
 
-        const content = data.articles.map((article) => {
+        const content = data.articles?.map((article) => {
             return {
                 title: article.title,
                 url: article.urlToImage,

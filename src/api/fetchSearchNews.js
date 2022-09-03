@@ -3,7 +3,7 @@ export const fetchSearchNews = async (searchText) => {
         const url = ` https://newsapi.org/v2/top-headlines?q=${searchText}&apiKey=15b5dec82ce84a9f870e969a8e4eeb6d`;
         const response = await fetch(url);
         const data = await response.json();
-        const content = data.articles.map((article) => {
+        const content = data.articles?.map((article) => {
             return {
                 title: article.title,
                 url: article.urlToImage,
