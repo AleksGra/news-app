@@ -1,6 +1,6 @@
 export const fetchSearchNews = async (searchText) => {
-    try{
-        const url = ` https://newsapi.org/v2/top-headlines?q=${searchText}&apiKey=fc48259ac29847549ef413127698eea6`;
+    try {
+        const url = ` https://newsapi.org/v2/top-headlines?q=${searchText}&apiKey=15b5dec82ce84a9f870e969a8e4eeb6d`;
         const response = await fetch(url);
         const data = await response.json();
         const content = data.articles.map((article) => {
@@ -13,7 +13,7 @@ export const fetchSearchNews = async (searchText) => {
             };
         });
         return content;
-    }catch(e){
+    } catch (e) {
         console.log(e)
     }
 

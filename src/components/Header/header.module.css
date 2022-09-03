@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper {
 
     background-color: #8e44ad;
     height: 7vh;
@@ -8,7 +8,7 @@
 
 }
 
-.title{
+.title {
 
     font-size: 24px;
     font-weight: 700;
@@ -31,6 +31,7 @@
 
 
 }
+
 .btn:after {
     content: '';
     position: absolute;
@@ -46,10 +47,12 @@
     -webkit-transition: width 150ms ease-in-out;
     transition: width 150ms ease-in-out;
 }
+
 .btn:hover {
     color: #fff;
 
 }
+
 .btn:hover:after {
     width: 110%;
 

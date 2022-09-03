@@ -1,18 +1,21 @@
-
 export const fetchNewsCategory = async (category) => {
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=fc48259ac29847549ef413127698eea6`;
+    try {
+        const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=15b5dec82ce84a9f870e969a8e4eeb6d`;
 
-    const response = await fetch(url).then();
-    const data = await response.json();
+        const response = await fetch(url).then();
+        const data = await response.json();
 
-    const content = data.articles.map((article) => {
-        return {
-            title: article.title,
-            url: article.urlToImage,
-            description: article.description,
-            content: article.content,
-            detail: article.url,
-        };
-    });
-    return content.filter((item) => item.url !== null);
+        const content = data.articles.map((article) => {
+            return {
+                title: article.title,
+                url: article.urlToImage,
+                description: article.description,
+                content: article.content,
+                detail: article.url,
+            };
+        });
+        return content.filter((item) => item.url !== null);
+    } catch (e) {
+        console.log(e)
+    }
 };

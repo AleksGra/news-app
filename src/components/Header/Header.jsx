@@ -4,9 +4,8 @@ import styles from './header.module.css'
 const Header = ({handleClickCategory}) => {
     const categories = ['business', 'entertainment', 'general', 'health', 'science', 'sports', 'technology']
     return (
-
         <div className={styles.wrapper}>
-            <div  className={styles.title}>News App</div>
+            <div className={styles.title}>News App</div>
             {
                 categories.map((category) => {
                     return (<button className={styles.btn} key={category} value={category}
@@ -14,7 +13,6 @@ const Header = ({handleClickCategory}) => {
                 })
 
             }</div>
-
     )
 }
 export default Header

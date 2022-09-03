@@ -11,9 +11,8 @@ import styles from "./main.module.css"
 export const Main = () => {
 
     const [newsList, setNewsList] = useState([])
-    const [visitedCategories, setVisitedCategories] = useState([])
-
-
+    const initialState = JSON.parse(localStorage.getItem("visitedCategories"));
+    const [visitedCategories, setVisitedCategories] = useState(initialState)
 
     useEffect(() => {
         const articles = async () => {
@@ -31,15 +30,10 @@ export const Main = () => {
         articles();
         !visitedCategories.includes(target.value) &&
         setVisitedCategories([...visitedCategories, target.value])
-
-
-
     }
     if (visitedCategories.length > 0) {
-        localStorage.setItem('visitedCategories', JSON.stringify(visitedCategories));
+        localStorage.setItem('visitedCategories', JSON.stringify(visitedCategories.slice(-3)));
     }
-    console.log('visitedCategories', visitedCategories)
-
 
     return (
         <div className={styles.wrapper}>

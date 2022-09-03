@@ -26,7 +26,6 @@ export const Search = ({setNewsList}) => {
             setSearchText('')
         }
     }
-
     return (
         <div className={styles.wrapper}>
             <input
@@ -40,7 +39,8 @@ export const Search = ({setNewsList}) => {
             />
 
             <button onClick={handleSearch}
-            className={styles.btn}>Search</button>
+                    className={styles.btn}>Search
+            </button>
         </div>
     );
 };
