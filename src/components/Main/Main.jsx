@@ -12,7 +12,7 @@ export const Main = () => {
 
     const [newsList, setNewsList] = useState([])
     const initialState = JSON.parse(localStorage.getItem("visitedCategories"));
-    const [visitedCategories, setVisitedCategories] = useState(initialState || [])
+    const [visitedCategories, setVisitedCategories] = useState(initialState )
 
     useEffect(() => {
         const articles = async () => {
@@ -31,7 +31,7 @@ export const Main = () => {
         !visitedCategories.includes(target.value) &&
         setVisitedCategories([...visitedCategories, target.value])
     }
-    if (visitedCategories?.length > 0) {
+    if (visitedCategories) {
         localStorage.setItem('visitedCategories', JSON.stringify(visitedCategories.slice(-3)));
     }
 
