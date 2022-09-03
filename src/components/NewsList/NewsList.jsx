@@ -1,4 +1,4 @@
-import React, from 'react'
+import React from 'react'
 import NewsListItem from "../NewsListItem/NewsListItem";
 import styles from './news-list.module.css'
 
