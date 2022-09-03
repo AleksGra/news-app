@@ -14,7 +14,7 @@ export const fetchNewsCategory = async (category) => {
                 detail: article.url,
             };
         });
-        return content.filter((item) => item.url !== null);
+        return content?.filter((item) => item.url !== null);
     } catch (e) {
         console.log(e)
     }
