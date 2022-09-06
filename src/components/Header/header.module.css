@@ -52,7 +52,9 @@
     color: #fff;
 
 }
-
+.btn:active{
+    background-color: darkred;
+}
 .btn:hover:after {
     width: 110%;
 
