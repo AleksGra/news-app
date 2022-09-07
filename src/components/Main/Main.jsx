@@ -1,50 +1,34 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {fetchNews} from "../../api/fetchNews";
 import Header from "../Header/Header";
 import {Search} from "../Search/Search";
 import NewsList from "../NewsList/NewsList";
 import VisitedCategories from "../VisitedCategories/VisitedCategories";
 import styles from "./main.module.css"
+import {useSelector, useDispatch} from 'react-redux'
+import {setCategory} from "../../redux/slices/categorySlice";
+import {setNewsList} from '../../redux/slices/newsListSlice'
+import {setVisitedCategories} from '../../redux/slices/visitedCategorySlice'
 
 
 export const Main = () => {
-    const [newsList, setNewsList] = useState([])
-    const initialState = JSON.parse(localStorage.getItem("visitedCategories"));
-    const [visitedCategories, setVisitedCategories] = useState(initialState || [])
-    const [inputText, setInputText] = useState('')
-    const [searchText, setSearchText] = useState('');
-    const [category, setCategory] = useState('')
+    const category = useSelector(state => state.category.value)
+    const searchText = useSelector(state => state.search.value)
+    const visitedCategories = useSelector(state => state.visitedCategory.value)
+    const dispatch = useDispatch()
 
-    console.log('searchText', searchText)
-    console.log('category', category)
-    const handleInputChange = ({target}) => {
-        setInputText(
-            target.value,
-        );
-    };
-    const handleSearch = () => {
-        setSearchText(inputText)
-        setInputText('')
-    };
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            handleSearch()
-            setInputText('')
-        }
-    }
     const fetchArticles = async (searchText, category) => {
         const article = await fetchNews(searchText, category);
-        setNewsList(article);
+        dispatch(setNewsList(article));
     }
-
     useEffect(() => {
         fetchArticles(searchText, category)
     }, [searchText, category]);
 
     const handleClickCategory = ({target}) => {
-        setCategory(target.value)
+        dispatch(setCategory(target.value))
         !visitedCategories.includes(target.value) &&
-        setVisitedCategories([...visitedCategories, target.value])
+        dispatch(setVisitedCategories(target.value))
     }
     if (visitedCategories.length > 0) {
         localStorage.setItem('visitedCategories', JSON.stringify(visitedCategories.slice(-3)));
@@ -53,11 +37,10 @@ export const Main = () => {
     return (
         <div className={styles.wrapper}>
             <Header handleClickCategory={handleClickCategory}/>
-            <Search setNewsList={setNewsList} handleInputChange={handleInputChange}
-                    inputText={inputText} handleSearch={handleSearch} handleKeyDown={handleKeyDown}/>
+            <Search/>
             <div className={styles.content}>
                 <VisitedCategories visitedCategories={visitedCategories} handleClickCategory={handleClickCategory}/>
-                <NewsList newsList={newsList}/>
+                <NewsList/>
             </div>
         </div>
     )

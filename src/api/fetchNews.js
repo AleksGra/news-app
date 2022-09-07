@@ -4,7 +4,6 @@ export const fetchNews = async (searchText, category) => {
     try {
         // const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=15b5dec82ce84a9f870e969a8e4eeb6d`
         //const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=15b5dec82ce84a9f870e969a8e4eeb6d`;
-
         const url = ` https://newsapi.org/v2/top-headlines?${searchText ? `q=${searchText}` : 'country=us'}${category ? `&category=${category}` : ''}&apiKey=${apiKey}`;
         const response = await fetch(url).then();
         const data = await response.json();
